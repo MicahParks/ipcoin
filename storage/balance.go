@@ -29,7 +29,7 @@ func GetBalance(ctx context.Context, db dbConn, request GetBalanceRequest) (int6
 	return available, nil
 }
 
-var projectStarted = time.Date(2025, 8, 10, 21, 0, 0, 0, time.UTC)
+var projectStarted = time.Date(2025, 8, 10, 20, 0, 0, 0, time.UTC)
 
 func BalanceUntouched(now time.Time) int64 {
 	return int64(now.Sub(projectStarted) / time.Hour)
