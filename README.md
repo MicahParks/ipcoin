@@ -5,7 +5,7 @@ ipcoin is the world's first recentralized cryptocurrency.
 Project web links:
 
 * Website: https://ipcoin.hypoxia.dev/
-* HackerNews:
+* HackerNews: https://news.ycombinator.com/item?id=44858431
 
 This is a cryptocurrency parody project. See the project website for more information.
 
