@@ -15,13 +15,16 @@ ipcoin is a simple web app. Every hour, each IP address in existance gets 1 ipco
 addresses and publish comments. All transfers and comments are public and published alongside the IP address that made
 them.
 
+Comments are automatically moderated once per minute
+using [OpenAI's free moderation API](https://platform.openai.com/docs/guides/moderation).
+
 The frontend is built using TypeScript, React Router 7, and Tailwind CSS.
 
 The backend is built using Golang, gRPC Gateway, and PostgreSQL.
 
 The ipcoin balance for a given IP address is calculated using the hard-coded start time, the transfer history, and the
 current time.
-__
+
 TODO Write a more detailed explanation some other day. I have to go get ice cream now.
 
 ## Where's the frontend code?
