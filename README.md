@@ -11,7 +11,9 @@ This is a cryptocurrency parody project. See the project website for more inform
 
 ## How does it work?
 
-ipcoin is a simple web app.
+ipcoin is a simple web app. Every hour, each IP address in existance gets 1 ipcoin. You can transfer ipcoins between IP
+addresses and publish comments. All transfers and comments are public and published alongside the IP address that made
+them.
 
 The frontend is built using TypeScript, React Router 7, and Tailwind CSS.
 
