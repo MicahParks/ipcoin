@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package nexus.recentralized.ipcoin;
+
+option go_package = "github.com/MicahParks/ipcoin/proto";
+
+import "google/protobuf/timestamp.proto";
+
+message GetBalanceRequest {
+  // The address is inferred from the gRPC peer.
+}
+
+message GetBalanceResponse {
+  Balance balance = 1;
+}
+
+message Balance {
+  google.protobuf.Timestamp timestamp = 1;
+  bytes address = 2;
+  int64 available = 3;
+}

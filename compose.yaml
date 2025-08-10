@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: "postgres:17"
+    environment:
+      POSTGRES_DB: "ipcoin"
+      POSTGRES_PASSWORD: "password"
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./startup.sql:/docker-entrypoint-initdb.d/startup.sql"

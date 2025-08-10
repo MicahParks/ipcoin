@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package nexus.recentralized.ipcoin;
+
+option go_package = "github.com/MicahParks/ipcoin/proto";
+
+import "google/api/annotations.proto";
+import "balance.proto";
+import "comment.proto";
+import "feed.proto";
+import "glance.proto";
+import "leaderboard.proto";
+import "transfer.proto";
+
+service IPCoinService {
+  rpc CreateComment(CreateCommentRequest) returns (CreateCommentResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/comment"
+      body: "*"
+    };
+  }
+  rpc CreateTransfer(CreateTransferRequest) returns (CreateTransferResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/transfer"
+      body: "*"
+    };
+  }
+  rpc GetBalance(GetBalanceRequest) returns (GetBalanceResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/balance"
+    };
+  }
+  rpc GetGlance(GetGlanceRequest) returns (GetGlanceResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/glance"
+      body: "*"
+    };
+  }
+  rpc GetFeed(GetFeedRequest) returns (GetFeedResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/feed"
+      body: "*"
+    };
+  }
+  rpc GetLeaderboard(GetLeaderboardRequest) returns (GetLeaderboardResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/leaderboard"
+    };
+  }
+}

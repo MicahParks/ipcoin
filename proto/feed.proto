@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package nexus.recentralized.ipcoin;
+
+option go_package = "github.com/MicahParks/ipcoin/proto";
+
+import "google/protobuf/timestamp.proto";
+import "comment.proto";
+import "transfer.proto";
+
+message GetFeedRequest {
+  optional bytes address = 1;
+}
+
+message GetFeedResponse {
+  Feed feed = 1;
+}
+
+message Feed {
+  google.protobuf.Timestamp timestamp = 1;
+  repeated Comment comment = 2;
+  repeated Transfer transfer = 3;
+}

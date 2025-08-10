@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package nexus.recentralized.ipcoin;
+
+option go_package = "github.com/MicahParks/ipcoin/proto";
+
+import "google/protobuf/timestamp.proto";
+
+message GetGlanceRequest {
+  optional bytes address = 1;
+}
+
+message GetGlanceResponse {
+  Glance glance = 1;
+  int64 balance_untouched = 2;
+}
+
+message Glance {
+  google.protobuf.Timestamp timestamp = 1;
+  bytes address = 2;
+  int64 balance_available = 3;
+  int64 comment_count = 4;
+  int64 transfer_count = 5;
+}

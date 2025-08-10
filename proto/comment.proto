@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package nexus.recentralized.ipcoin;
+
+option go_package = "github.com/MicahParks/ipcoin/proto";
+
+import "google/protobuf/timestamp.proto";
+
+message CreateCommentRequest {
+  // The address is inferred from the gRPC peer.
+  string comment = 1;
+}
+
+message CreateCommentResponse {
+  Comment comment = 1;
+}
+
+message Comment {
+  google.protobuf.Timestamp created = 1;
+  string id = 2;
+  bytes address = 3;
+  string message = 4;
+  bool censored = 5;
+}

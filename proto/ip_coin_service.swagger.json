@@ -1,0 +1,472 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ip_coin_service.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "IPCoinService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/balance": {
+      "get": {
+        "operationId": "IPCoinService_GetBalance",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ipcoinGetBalanceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "IPCoinService"
+        ]
+      }
+    },
+    "/api/v1/comment": {
+      "post": {
+        "operationId": "IPCoinService_CreateComment",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ipcoinCreateCommentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ipcoinCreateCommentRequest"
+            }
+          }
+        ],
+        "tags": [
+          "IPCoinService"
+        ]
+      }
+    },
+    "/api/v1/feed": {
+      "post": {
+        "operationId": "IPCoinService_GetFeed",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ipcoinGetFeedResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ipcoinGetFeedRequest"
+            }
+          }
+        ],
+        "tags": [
+          "IPCoinService"
+        ]
+      }
+    },
+    "/api/v1/glance": {
+      "post": {
+        "operationId": "IPCoinService_GetGlance",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ipcoinGetGlanceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ipcoinGetGlanceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "IPCoinService"
+        ]
+      }
+    },
+    "/api/v1/leaderboard": {
+      "get": {
+        "operationId": "IPCoinService_GetLeaderboard",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ipcoinGetLeaderboardResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "IPCoinService"
+        ]
+      }
+    },
+    "/api/v1/transfer": {
+      "post": {
+        "operationId": "IPCoinService_CreateTransfer",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ipcoinCreateTransferResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ipcoinCreateTransferRequest"
+            }
+          }
+        ],
+        "tags": [
+          "IPCoinService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ipcoinBalance": {
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "address": {
+          "type": "string",
+          "format": "byte"
+        },
+        "available": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "ipcoinComment": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "id": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string",
+          "format": "byte"
+        },
+        "message": {
+          "type": "string"
+        },
+        "censored": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ipcoinCreateCommentRequest": {
+      "type": "object",
+      "properties": {
+        "comment": {
+          "type": "string",
+          "description": "The address is inferred from the gRPC peer."
+        }
+      }
+    },
+    "ipcoinCreateCommentResponse": {
+      "type": "object",
+      "properties": {
+        "comment": {
+          "$ref": "#/definitions/ipcoinComment"
+        }
+      }
+    },
+    "ipcoinCreateTransferRequest": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "string",
+          "format": "int64",
+          "description": "The sender address is inferred from the gRPC peer."
+        },
+        "recipientAddress": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "ipcoinCreateTransferResponse": {
+      "type": "object",
+      "properties": {
+        "transfer": {
+          "$ref": "#/definitions/ipcoinTransfer"
+        },
+        "senderBalance": {
+          "$ref": "#/definitions/ipcoinBalance"
+        }
+      }
+    },
+    "ipcoinFeed": {
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "comment": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/ipcoinComment"
+          }
+        },
+        "transfer": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/ipcoinTransfer"
+          }
+        }
+      }
+    },
+    "ipcoinGetBalanceResponse": {
+      "type": "object",
+      "properties": {
+        "balance": {
+          "$ref": "#/definitions/ipcoinBalance"
+        }
+      }
+    },
+    "ipcoinGetFeedRequest": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "ipcoinGetFeedResponse": {
+      "type": "object",
+      "properties": {
+        "feed": {
+          "$ref": "#/definitions/ipcoinFeed"
+        }
+      }
+    },
+    "ipcoinGetGlanceRequest": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "ipcoinGetGlanceResponse": {
+      "type": "object",
+      "properties": {
+        "glance": {
+          "$ref": "#/definitions/ipcoinGlance"
+        },
+        "balanceUntouched": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "ipcoinGetLeaderboardResponse": {
+      "type": "object",
+      "properties": {
+        "leaderboard": {
+          "$ref": "#/definitions/ipcoinLeaderboard"
+        }
+      }
+    },
+    "ipcoinGlance": {
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "address": {
+          "type": "string",
+          "format": "byte"
+        },
+        "balanceAvailable": {
+          "type": "string",
+          "format": "int64"
+        },
+        "commentCount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "transferCount": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "ipcoinLeaderboard": {
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "balanceUntouched": {
+          "type": "string",
+          "format": "int64"
+        },
+        "leaderboardBalance": {
+          "$ref": "#/definitions/ipcoinLeaderboardBalance"
+        },
+        "leaderboardTransfer": {
+          "$ref": "#/definitions/ipcoinLeaderboardTransfer"
+        }
+      }
+    },
+    "ipcoinLeaderboardBalance": {
+      "type": "object",
+      "properties": {
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/ipcoinGlance"
+          }
+        }
+      }
+    },
+    "ipcoinLeaderboardTransfer": {
+      "type": "object",
+      "properties": {
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/ipcoinGlance"
+          }
+        }
+      }
+    },
+    "ipcoinTransfer": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "id": {
+          "type": "string"
+        },
+        "senderAddress": {
+          "type": "string",
+          "format": "byte"
+        },
+        "recipientAddress": {
+          "type": "string",
+          "format": "byte"
+        },
+        "amount": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

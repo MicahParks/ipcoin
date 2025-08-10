@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package nexus.recentralized.ipcoin;
+
+option go_package = "github.com/MicahParks/ipcoin/proto";
+
+import "google/protobuf/timestamp.proto";
+import "glance.proto";
+
+message GetLeaderboardRequest {}
+
+message GetLeaderboardResponse {
+  Leaderboard leaderboard = 1;
+}
+
+message Leaderboard {
+  google.protobuf.Timestamp timestamp = 1;
+  int64 balance_untouched = 2;
+  LeaderboardBalance leaderboard_balance = 3;
+  LeaderboardTransfer leaderboard_transfer = 4;
+}
+
+message LeaderboardBalance {
+  repeated Glance entries = 1;
+}
+
+message LeaderboardTransfer {
+  repeated Glance entries = 1;
+}
